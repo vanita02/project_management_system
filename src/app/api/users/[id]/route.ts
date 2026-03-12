@@ -6,9 +6,10 @@ import { RoleAuthorization } from "@/lib/authorization";
 // DELETE user (managers only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await context.params;
     const authHeader = request.headers.get("authorization");
     const token = getTokenFromHeaders(authHeader);
 
@@ -38,7 +39,7 @@ export async function DELETE(
       );
     }
 
-    const userIdToDelete = params.id;
+    const userIdToDelete = id;
 
     if (!userIdToDelete) {
       return NextResponse.json(

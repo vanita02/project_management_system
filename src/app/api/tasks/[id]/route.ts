@@ -5,10 +5,10 @@ import { verifyToken, getTokenFromHeaders } from "@/lib/auth";
 // GET a single task
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const authHeader = request.headers.get("authorization");
     const token = getTokenFromHeaders(authHeader);
 
@@ -53,10 +53,10 @@ export async function GET(
 // UPDATE a task
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const authHeader = request.headers.get("authorization");
     const token = getTokenFromHeaders(authHeader);
 
@@ -127,10 +127,10 @@ export async function PUT(
 // DELETE a task
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const authHeader = request.headers.get("authorization");
     const token = getTokenFromHeaders(authHeader);
 
