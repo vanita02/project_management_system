@@ -142,9 +142,9 @@ export default function BoardsPage() {
                           {task.user ? (
                             <>
                               <div className="w-6 h-6 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-xs font-medium text-white">
-                                {task.user.name.split(' ').map(n => n[0]).join('')}
+                                {task.user?.name?.split(' ').map(n => n[0]).join('') || '?'}
                               </div>
-                              <span className="text-xs text-slate-600 dark:text-slate-400">{task.user.name}</span>
+                              <span className="text-xs text-slate-600 dark:text-slate-400">{task.user?.name || 'Unassigned'}</span>
                             </>
                           ) : (
                             <span className="text-xs text-slate-400 dark:text-slate-500">Unassigned</span>

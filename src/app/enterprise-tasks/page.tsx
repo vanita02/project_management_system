@@ -143,9 +143,9 @@ export default function EnterpriseTasksPage() {
                       {task.user ? (
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-xs font-medium text-slate-600">
-                            {task.user.name.split(' ').map(n => n[0]).join('')}
+                            {task.user?.name?.split(' ').map(n => n[0]).join('') || '?'}
                           </div>
-                          <span className="text-sm text-slate-600">{task.user.name}</span>
+                          <span className="text-sm text-slate-600">{task.user?.name || 'Unassigned'}</span>
                         </div>
                       ) : (
                         <span className="text-sm text-slate-400">Unassigned</span>

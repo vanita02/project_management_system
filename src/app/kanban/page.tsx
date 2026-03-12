@@ -224,7 +224,7 @@ export default function KanbanPage() {
                         <div className="flex items-center gap-1">
                           {task.user ? (
                             <div className="w-6 h-6 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xs font-medium">
-                              {task.user.name.charAt(0).toUpperCase()}
+                              {task.user?.name?.charAt(0).toUpperCase() || '?'}
                             </div>
                           ) : (
                             <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-slate-400 text-xs font-medium">

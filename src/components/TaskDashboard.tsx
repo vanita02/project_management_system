@@ -353,7 +353,7 @@ export default function TaskDashboard() {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
-                            Assigned to: <span className="font-medium text-stone-700 dark:text-stone-300">{task.user.name}</span>
+                            Assigned to: <span className="font-medium text-stone-700 dark:text-stone-300">{task.user?.name || 'Unassigned'}</span>
                           </div>
                         )}
                       </div>
@@ -434,7 +434,7 @@ function TaskModal({ task, users, isManager, token, onClose, onSave }: TaskModal
   const [dueDate, setDueDate] = useState(
     task?.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : ""
   );
-  const [userId, setUserId] = useState(task?.user.id || "");
+  const [userId, setUserId] = useState(task?.user?.id || "");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
