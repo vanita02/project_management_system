@@ -6,13 +6,9 @@ import { useAuth } from "@/contexts/AuthContext";
 import DashboardLayout from "@/components/DashboardLayout";
 import { JiraMetricCard } from "@/components/ui/JiraCard";
 import { JiraButton } from "@/components/ui/JiraButton";
+import { User } from "@/types";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: "USER" | "MANAGER";
-  createdAt: string;
+interface UserWithTaskCount extends User {
   _count?: {
     tasks: number;
   };
@@ -21,7 +17,7 @@ interface User {
 export default function TeamPage() {
   const { user, token } = useAuth();
   const router = useRouter();
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserWithTaskCount[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [roleFilter, setRoleFilter] = useState<string>("ALL");

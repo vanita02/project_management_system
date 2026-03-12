@@ -5,19 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import DashboardLayout from "@/components/DashboardLayout";
 import { JiraMetricCard } from "@/components/ui/JiraCard";
 import { JiraButton } from "@/components/ui/JiraButton";
-
-interface Task {
-  id: number;
-  title: string;
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
-  priority: "LOW" | "MEDIUM" | "HIGH";
-  dueDate: string | null;
-  createdAt: string;
-  user: {
-    id: number;
-    name: string;
-  };
-}
+import { Task } from "@/types";
 
 export default function AnalyticsPage() {
   const { token } = useAuth();

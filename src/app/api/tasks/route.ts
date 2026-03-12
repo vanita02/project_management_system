@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 401 });
     }
     
-    if (!RoleAuthorization.canCreateTask(userFromDb)) {
+    if (!RoleAuthorization.canCreateTask(userFromDb as any)) {
       return NextResponse.json(
         { error: "Insufficient permissions to create tasks" },
         { status: 403 }

@@ -5,16 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import DashboardLayout from "@/components/DashboardLayout";
 import { JiraStatusBadge, JiraPriorityBadge } from "@/components/ui/JiraCard";
 import { JiraButton } from "@/components/ui/JiraButton";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string | null;
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
-  priority: "LOW" | "MEDIUM" | "HIGH";
-  dueDate: string | null;
-  createdAt: string;
-}
+import { Task } from "@/types";
 
 export default function CalendarPage() {
   const { token } = useAuth();

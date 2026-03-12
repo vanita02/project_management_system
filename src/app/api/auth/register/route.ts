@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { hashPassword, generateToken } from "@/lib/auth";
-import { user_role } from "@prisma/client";
+// import { user_role } from "@prisma/client";
 
 export async function POST(request: NextRequest) {
   try {
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         email,
         password: hashedPassword,
         name,
-        role: role === "MANAGER" ? user_role.MANAGER : user_role.USER,
+        role: role === "MANAGER" ? "MANAGER" : "USER",
         updatedAt: new Date(),
       },
     });

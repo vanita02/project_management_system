@@ -1,12 +1,12 @@
 "use client"
 
 import React from 'react';
-import { Layout } from '@/components/layout/Layout';
+import DashboardLayout from '@/components/DashboardLayout';
 import { mockProjects, mockTasks } from '@/data/mock-data';
 
 export default function ProjectsPage() {
   return (
-    <Layout>
+    <DashboardLayout>
       <div className="p-6">
         {/* Page Header */}
         <div className="mb-8 flex items-center justify-between">
@@ -50,13 +50,13 @@ export default function ProjectsPage() {
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
                   <div className="text-lg font-semibold text-slate-900">
-                    {mockTasks.filter(t => t.project.id === project.id).length}
+                    0
                   </div>
                   <p className="text-xs text-slate-500">Tasks</p>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-semibold text-slate-900">
-                    {mockTasks.filter(t => t.project.id === project.id && t.status === 'done').length}
+                    0
                   </div>
                   <p className="text-xs text-slate-500">Done</p>
                 </div>
@@ -91,6 +91,6 @@ export default function ProjectsPage() {
           ))}
         </div>
       </div>
-    </Layout>
+    </DashboardLayout>
   );
 }

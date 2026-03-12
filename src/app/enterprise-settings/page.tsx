@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
 import React from 'react';
-import { Layout } from '@/components/layout/Layout';
-import { User, Bell, Shield, Palette, Globe, HelpCircle } from 'lucide-react';
+import DashboardLayout from '@/components/DashboardLayout';
 
 export default function EnterpriseSettingsPage() {
   const settingsSections = [
     {
       title: 'Profile',
-      icon: User,
+      icon: '👤',
       items: [
         { label: 'Personal Information', description: 'Update your name, email, and avatar' },
         { label: 'Password', description: 'Change your password' },
@@ -17,7 +16,7 @@ export default function EnterpriseSettingsPage() {
     },
     {
       title: 'Notifications',
-      icon: Bell,
+      icon: '🔔',
       items: [
         { label: 'Email Notifications', description: 'Configure email alerts' },
         { label: 'Push Notifications', description: 'Manage push notifications' },
@@ -26,7 +25,7 @@ export default function EnterpriseSettingsPage() {
     },
     {
       title: 'Security',
-      icon: Shield,
+      icon: '🛡️',
       items: [
         { label: 'Two-Factor Authentication', description: 'Add an extra layer of security' },
         { label: 'Active Sessions', description: 'View and manage your active sessions' },
@@ -35,7 +34,7 @@ export default function EnterpriseSettingsPage() {
     },
     {
       title: 'Appearance',
-      icon: Palette,
+      icon: '🎨',
       items: [
         { label: 'Theme', description: 'Choose between light and dark mode' },
         { label: 'Accent Color', description: 'Customize your accent color' },
@@ -44,7 +43,7 @@ export default function EnterpriseSettingsPage() {
     },
     {
       title: 'Regional',
-      icon: Globe,
+      icon: '🌍',
       items: [
         { label: 'Language', description: 'Select your preferred language' },
         { label: 'Time Zone', description: 'Set your local time zone' },
@@ -53,7 +52,7 @@ export default function EnterpriseSettingsPage() {
     },
     {
       title: 'Help & Support',
-      icon: HelpCircle,
+      icon: '❓',
       items: [
         { label: 'Documentation', description: 'Browse our help articles' },
         { label: 'Contact Support', description: 'Get in touch with our support team' },
@@ -63,7 +62,7 @@ export default function EnterpriseSettingsPage() {
   ];
 
   return (
-    <Layout>
+    <DashboardLayout>
       <div className="p-6">
         {/* Page Header */}
         <div className="mb-8">
@@ -73,16 +72,14 @@ export default function EnterpriseSettingsPage() {
 
         {/* Settings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {settingsSections.map((section) => {
-            const Icon = section.icon;
-            return (
-              <div key={section.title} className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-slate-600" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900">{section.title}</h3>
+          {settingsSections.map((section) => (
+            <div key={section.title} className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+                  <span className="text-xl">{section.icon}</span>
                 </div>
+                <h3 className="font-semibold text-slate-900">{section.title}</h3>
+              </div>
                 
                 <div className="space-y-3">
                   {section.items.map((item) => (
@@ -97,9 +94,8 @@ export default function EnterpriseSettingsPage() {
                     </button>
                   ))}
                 </div>
-              </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* Account Actions */}
@@ -118,6 +114,6 @@ export default function EnterpriseSettingsPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </DashboardLayout>
   );
 }

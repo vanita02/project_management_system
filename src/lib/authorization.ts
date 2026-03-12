@@ -4,7 +4,7 @@ export interface User {
   id: number;
   email: string;
   name: string;
-  role: UserRole;
+  role: 'USER' | 'MANAGER';
 }
 
 export class RoleAuthorization {

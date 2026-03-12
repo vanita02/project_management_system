@@ -27,7 +27,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 401 });
     }
     
-    if (!RoleAuthorization.canManageUsers(userFromDb)) {
+    if (!RoleAuthorization.canManageUsers(userFromDb as any)) {
       return NextResponse.json(
         { error: "Only managers can delete all tasks" },
         { status: 403 }

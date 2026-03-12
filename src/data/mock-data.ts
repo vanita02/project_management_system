@@ -2,32 +2,36 @@ import { User, Project, Task } from '@/types';
 
 export const mockUsers: User[] = [
   {
-    id: '1',
+    id: 1,
     name: 'Sarah Chen',
     email: 'sarah.chen@company.com',
-    avatar: 'SC',
-    role: 'admin'
+    role: 'MANAGER',
+    createdAt: new Date('2024-01-01'),
+    updatedAt: new Date('2024-01-01')
   },
   {
-    id: '2',
+    id: 2,
     name: 'Marcus Johnson',
     email: 'marcus.j@company.com',
-    avatar: 'MJ',
-    role: 'member'
+    role: 'USER',
+    createdAt: new Date('2024-01-02'),
+    updatedAt: new Date('2024-01-02')
   },
   {
-    id: '3',
+    id: 3,
     name: 'Emily Rodriguez',
     email: 'emily.r@company.com',
-    avatar: 'ER',
-    role: 'member'
+    role: 'USER',
+    createdAt: new Date('2024-01-03'),
+    updatedAt: new Date('2024-01-03')
   },
   {
-    id: '4',
+    id: 4,
     name: 'David Kim',
     email: 'david.k@company.com',
-    avatar: 'DK',
-    role: 'viewer'
+    role: 'USER',
+    createdAt: new Date('2024-01-04'),
+    updatedAt: new Date('2024-01-04')
   }
 ];
 
@@ -69,78 +73,63 @@ export const mockProjects: Project[] = [
 
 export const mockTasks: Task[] = [
   {
-    id: 'task-1',
+    id: 1,
     title: 'Design new dashboard layout',
     description: 'Create mockups for the updated dashboard interface',
-    status: 'in_progress',
-    priority: 'high',
-    type: 'task',
-    assignee: mockUsers[0],
-    reporter: mockUsers[1],
-    project: mockProjects[0],
+    status: 'IN_PROGRESS',
+    priority: 'HIGH',
     dueDate: new Date('2024-03-20'),
     createdAt: new Date('2024-03-05'),
     updatedAt: new Date('2024-03-10'),
-    labels: ['design', 'ui/ux']
+    userId: 1,
+    user: mockUsers[0]
   },
   {
-    id: 'task-2',
+    id: 2,
     title: 'Fix authentication bug',
     description: 'Users unable to login with social accounts',
-    status: 'todo',
-    priority: 'critical',
-    type: 'bug',
-    assignee: mockUsers[1],
-    reporter: mockUsers[2],
-    project: mockProjects[0],
+    status: 'PENDING',
+    priority: 'HIGH',
     dueDate: new Date('2024-03-18'),
     createdAt: new Date('2024-03-08'),
     updatedAt: new Date('2024-03-08'),
-    labels: ['bug', 'auth']
+    userId: 2,
+    user: mockUsers[1]
   },
   {
-    id: 'task-3',
+    id: 3,
     title: 'Implement payment gateway',
     description: 'Integrate Stripe payment processing',
-    status: 'review',
-    priority: 'high',
-    type: 'story',
-    assignee: mockUsers[2],
-    reporter: mockUsers[0],
-    project: mockProjects[1],
+    status: 'IN_PROGRESS',
+    priority: 'HIGH',
     dueDate: new Date('2024-03-25'),
     createdAt: new Date('2024-03-01'),
     updatedAt: new Date('2024-03-14'),
-    labels: ['backend', 'integration']
+    userId: 2,
+    user: mockUsers[1]
   },
   {
-    id: 'task-4',
+    id: 4,
     title: 'Update user documentation',
     description: 'Update API documentation with new endpoints',
-    status: 'done',
-    priority: 'medium',
-    type: 'task',
-    assignee: mockUsers[3],
-    reporter: mockUsers[1],
-    project: mockProjects[1],
+    status: 'COMPLETED',
+    priority: 'MEDIUM',
     dueDate: new Date('2024-03-15'),
     createdAt: new Date('2024-03-01'),
     updatedAt: new Date('2024-03-13'),
-    labels: ['documentation']
+    userId: 3,
+    user: mockUsers[2]
   },
   {
-    id: 'task-5',
+    id: 5,
     title: 'Database schema optimization',
     description: 'Optimize database queries for better performance',
-    status: 'todo',
-    priority: 'medium',
-    type: 'epic',
-    assignee: mockUsers[0],
-    reporter: mockUsers[2],
-    project: mockProjects[2],
+    status: 'PENDING',
+    priority: 'MEDIUM',
     dueDate: new Date('2024-04-01'),
     createdAt: new Date('2024-03-10'),
     updatedAt: new Date('2024-03-10'),
-    labels: ['database', 'performance']
+    userId: 1,
+    user: mockUsers[0]
   }
 ];

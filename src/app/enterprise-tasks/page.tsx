@@ -1,42 +1,36 @@
 "use client"
 
 import React from 'react';
-import { Layout } from '@/components/layout/Layout';
+import DashboardLayout from '@/components/DashboardLayout';
 import { mockTasks } from '@/data/mock-data';
+import { Task } from '@/types';
 
 export default function EnterpriseTasksPage() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-100 text-red-700';
-      case 'high': return 'bg-orange-100 text-orange-700';
-      case 'medium': return 'bg-yellow-100 text-yellow-700';
-      case 'low': return 'bg-gray-100 text-gray-700';
+      case 'HIGH': return 'bg-red-100 text-red-700';
+      case 'MEDIUM': return 'bg-yellow-100 text-yellow-700';
+      case 'LOW': return 'bg-gray-100 text-gray-700';
       default: return 'bg-gray-100 text-gray-700';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'done': return 'bg-green-100 text-green-700';
-      case 'in_progress': return 'bg-blue-100 text-blue-700';
-      case 'review': return 'bg-purple-100 text-purple-700';
-      case 'todo': return 'bg-gray-100 text-gray-700';
+      case 'COMPLETED': return 'bg-green-100 text-green-700';
+      case 'IN_PROGRESS': return 'bg-blue-100 text-blue-700';
+      case 'PENDING': return 'bg-gray-100 text-gray-700';
       default: return 'bg-gray-100 text-gray-700';
     }
   };
 
   const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'bug': return 'bg-red-100 text-red-700';
-      case 'story': return 'bg-blue-100 text-blue-700';
-      case 'epic': return 'bg-purple-100 text-purple-700';
-      case 'task': return 'bg-gray-100 text-gray-700';
-      default: return 'bg-gray-100 text-gray-700';
-    }
+    // Since type field doesn't exist in schema, return default color
+    return 'bg-gray-100 text-gray-700';
   };
 
   return (
-    <Layout>
+    <DashboardLayout>
       <div className="p-6">
         {/* Page Header */}
         <div className="mb-8 flex items-center justify-between">
@@ -70,15 +64,13 @@ export default function EnterpriseTasksPage() {
             <div className="flex gap-3">
               <select className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent">
                 <option>All Status</option>
-                <option>To Do</option>
+                <option>Pending</option>
                 <option>In Progress</option>
-                <option>Review</option>
-                <option>Done</option>
+                <option>Completed</option>
               </select>
               
               <select className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent">
                 <option>All Priority</option>
-                <option>Critical</option>
                 <option>High</option>
                 <option>Medium</option>
                 <option>Low</option>
@@ -87,9 +79,6 @@ export default function EnterpriseTasksPage() {
               <select className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent">
                 <option>All Types</option>
                 <option>Task</option>
-                <option>Bug</option>
-                <option>Story</option>
-                <option>Epic</option>
               </select>
             </div>
           </div>
@@ -129,8 +118,8 @@ export default function EnterpriseTasksPage() {
                   <tr key={task.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <span className={`text-xs px-2 py-1 rounded font-medium ${getTypeColor(task.type)}`}>
-                          {task.type}
+                        <span className={`text-xs px-2 py-1 rounded font-medium ${getTypeColor('task')}`}>
+                          Task
                         </span>
                         <div>
                           <div className="font-medium text-slate-900">{task.title}</div>
@@ -151,23 +140,20 @@ export default function EnterpriseTasksPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      {task.assignee ? (
+                      {task.user ? (
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-xs font-medium text-slate-600">
-                            {task.assignee.name.split(' ').map(n => n[0]).join('')}
+                            {task.user.name.split(' ').map(n => n[0]).join('')}
                           </div>
-                          <span className="text-sm text-slate-600">{task.assignee.name}</span>
+                          <span className="text-sm text-slate-600">{task.user.name}</span>
                         </div>
                       ) : (
                         <span className="text-sm text-slate-400">Unassigned</span>
                       )}
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-1 rounded">
-                          {task.project.key}
-                        </span>
-                        <span className="text-sm text-slate-600">{task.project.name}</span>
+                      <div className="text-sm text-slate-600">
+                        No project data available
                       </div>
                     </td>
                     <td className="px-6 py-4">
@@ -200,6 +186,6 @@ export default function EnterpriseTasksPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </DashboardLayout>
   );
 }

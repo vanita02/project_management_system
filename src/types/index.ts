@@ -1,9 +1,23 @@
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
-  avatar?: string;
-  role: 'admin' | 'member' | 'viewer';
+  role: 'USER' | 'MANAGER';
+  createdAt: Date;
+  updatedAt?: Date;
+}
+
+export interface Notification {
+  id: number;
+  userId: number;
+  title: string;
+  message: string;
+  fullMessage?: string | null;
+  senderName?: string | null;
+  type: string;
+  relatedId?: number | null;
+  isRead: boolean;
+  createdAt: Date | string;
 }
 
 export interface Project {
@@ -19,19 +33,16 @@ export interface Project {
 }
 
 export interface Task {
-  id: string;
+  id: number;
   title: string;
   description?: string;
-  status: 'todo' | 'in_progress' | 'review' | 'done';
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  type: 'task' | 'bug' | 'story' | 'epic';
-  assignee?: User;
-  reporter: User;
-  project: Project;
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
+  priority: 'LOW' | 'MEDIUM' | 'HIGH';
   dueDate?: Date;
   createdAt: Date;
   updatedAt: Date;
-  labels: string[];
+  userId: number;
+  user?: User;
 }
 
 export interface BoardColumn {

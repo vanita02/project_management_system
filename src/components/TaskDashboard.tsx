@@ -3,28 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "./Navbar";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string | null;
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
-  priority: "LOW" | "MEDIUM" | "HIGH";
-  dueDate: string | null;
-  createdAt: string;
-  user: {
-    id: number;
-    name: string;
-    email: string;
-  };
-}
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-}
+import { Task, User } from "@/types";
 
 export default function TaskDashboard() {
   const { user, token } = useAuth();

@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "User not found" }, { status: 401 });
     }
     
-    if (!RoleAuthorization.canManageUsers(userFromDb)) {
+    if (!RoleAuthorization.canManageUsers(userFromDb as any)) {
       return NextResponse.json(
         { error: "Only managers can create users" },
         { status: 403 }

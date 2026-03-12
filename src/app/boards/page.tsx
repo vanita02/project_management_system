@@ -6,34 +6,28 @@ import { useAuth } from '@/contexts/AuthContext';
 import { RoleAuthorization, User } from '@/lib/authorization';
 import { mockTasks } from '@/data/mock-data';
 import { JiraButton } from '@/components/ui/JiraButton';
+import { Task } from '@/types';
 
 export default function BoardsPage() {
   const { user } = useAuth();
   const columns = [
-    { id: 'todo', title: 'To Do', status: 'todo' as const },
-    { id: 'in_progress', title: 'In Progress', status: 'in_progress' as const },
-    { id: 'review', title: 'Review', status: 'review' as const },
-    { id: 'done', title: 'Done', status: 'done' as const },
+    { id: 'pending', title: 'To Do', status: 'PENDING' as const },
+    { id: 'in_progress', title: 'In Progress', status: 'IN_PROGRESS' as const },
+    { id: 'completed', title: 'Done', status: 'COMPLETED' as const },
   ];
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800';
-      case 'high': return 'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-400 dark:border-orange-800';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800';
-      case 'low': return 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-900/30 dark:text-gray-400 dark:border-gray-800';
+      case 'HIGH': return 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800';
+      case 'MEDIUM': return 'bg-yellow-100 text-yellow-700 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800';
+      case 'LOW': return 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-900/30 dark:text-gray-400 dark:border-gray-800';
       default: return 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-900/30 dark:text-gray-400 dark:border-gray-800';
     }
   };
 
   const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'bug': return 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
-      case 'story': return 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400';
-      case 'epic': return 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400';
-      case 'task': return 'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400';
-      default: return 'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400';
-    }
+    // Since type field doesn't exist in schema, return default color
+    return 'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400';
   };
 
   const handleDragStart = (e: React.DragEvent, taskId: number) => {
@@ -116,15 +110,15 @@ export default function BoardsPage() {
                     <div
                       key={task.id}
                       draggable
-                      onDragStart={(e) => handleDragStart(e, parseInt(task.id))}
+                      onDragStart={(e) => handleDragStart(e, task.id)}
                       onDragOver={handleDragOver}
                       onDrop={(e) => handleDrop(e, column.status)}
                       className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 cursor-move hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-200"
                     >
                       {/* Task Header */}
                       <div className="flex items-start justify-between mb-3">
-                        <span className={`text-xs px-2 py-1 rounded font-medium ${getTypeColor(task.type)}`}>
-                          {task.type}
+                        <span className={`text-xs px-2 py-1 rounded font-medium ${getTypeColor('task')}`}>
+                          Task
                         </span>
                         <span className={`text-xs px-2 py-1 rounded border ${getPriorityColor(task.priority)}`}>
                           {task.priority}
@@ -139,30 +133,18 @@ export default function BoardsPage() {
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 line-clamp-2">{task.description}</p>
                       )}
 
-                      {/* Labels */}
-                      {task.labels.length > 0 && (
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {task.labels.map((label) => (
-                            <span
-                              key={label}
-                              className="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 px-2 py-1 rounded"
-                            >
-                              {label}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                      {/* Labels - Not available in schema, so removed */}
 
                       {/* Task Footer */}
                       <div className="flex items-center justify-between">
                         {/* Assignee */}
                         <div className="flex items-center gap-2">
-                          {task.assignee ? (
+                          {task.user ? (
                             <>
                               <div className="w-6 h-6 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-xs font-medium text-white">
-                                {task.assignee.name.split(' ').map(n => n[0]).join('')}
+                                {task.user.name.split(' ').map(n => n[0]).join('')}
                               </div>
-                              <span className="text-xs text-slate-600 dark:text-slate-400">{task.assignee.name}</span>
+                              <span className="text-xs text-slate-600 dark:text-slate-400">{task.user.name}</span>
                             </>
                           ) : (
                             <span className="text-xs text-slate-400 dark:text-slate-500">Unassigned</span>

@@ -3,21 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import DashboardLayout from "@/components/DashboardLayout";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string | null;
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
-  priority: "LOW" | "MEDIUM" | "HIGH";
-  dueDate: string | null;
-  createdAt: string;
-  user: {
-    id: number;
-    name: string;
-    email: string;
-  };
-}
+import { Task, User } from "@/types";
 
 type Column = "PENDING" | "IN_PROGRESS" | "COMPLETED";
 
@@ -236,9 +222,15 @@ export default function KanbanPage() {
                           </div>
                         )}
                         <div className="flex items-center gap-1">
-                          <div className="w-6 h-6 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xs font-medium">
-                            {task.user.name.charAt(0).toUpperCase()}
-                          </div>
+                          {task.user ? (
+                            <div className="w-6 h-6 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                              {task.user.name.charAt(0).toUpperCase()}
+                            </div>
+                          ) : (
+                            <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-slate-400 text-xs font-medium">
+                              ?
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -3,19 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import { JiraButton } from "@/components/ui/JiraButton";
-
-interface Notification {
-  id: number;
-  userId: number;
-  title: string;
-  message: string;
-  fullMessage?: string | null;
-  senderName?: string | null;
-  type: string;
-  relatedId?: number | null;
-  isRead: boolean;
-  createdAt: string | Date;
-}
+import { Notification } from "@/types";
 
 export default function Notifications() {
   const { notifications, unreadCount, markAsRead, isLoading } = useNotifications();

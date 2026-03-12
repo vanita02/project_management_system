@@ -6,28 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import DashboardLayout from "@/components/DashboardLayout";
 import { JiraStatusBadge, JiraPriorityBadge } from "@/components/ui/JiraCard";
 import { JiraButton } from "@/components/ui/JiraButton";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string | null;
-  status: "PENDING" | "IN_PROGRESS" | "COMPLETED";
-  priority: "LOW" | "MEDIUM" | "HIGH";
-  dueDate: string | null;
-  createdAt: string;
-  user: {
-    id: number;
-    name: string;
-    email: string;
-  } | null;
-}
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-}
+import { Task, User } from "@/types";
 
 export default function TasksPage() {
   const { user, token } = useAuth();
