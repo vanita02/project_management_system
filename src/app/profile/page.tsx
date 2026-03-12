@@ -168,10 +168,10 @@ export default function ProfilePage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6">
             <div className="flex flex-col items-center">
               <div className="w-24 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-lg shadow-violet-500/25 mb-4">
-                {user?.name.charAt(0).toUpperCase()}
+                {user?.name?.charAt(0).toUpperCase() || '?'}
               </div>
-              <h2 className="text-xl font-semibold text-slate-800 dark:text-white">{user?.name}</h2>
-              <p className="text-slate-500 dark:text-slate-400">{user?.email}</p>
+              <h2 className="text-xl font-semibold text-slate-800 dark:text-white">{user?.name || 'User'}</h2>
+              <p className="text-slate-500 dark:text-slate-400">{user?.email || 'No email'}</p>
               <span className={`mt-3 px-4 py-1.5 rounded-full text-sm font-medium ${
                 user?.role === "MANAGER"
                   ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"

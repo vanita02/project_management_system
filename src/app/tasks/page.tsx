@@ -110,7 +110,7 @@ export default function TasksPage() {
     .filter((task) => {
       if (filter !== "ALL" && task.status !== filter) return false;
       if (priorityFilter !== "ALL" && task.priority !== priorityFilter) return false;
-      if (searchQuery && !task.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+      if (searchQuery && !task.title?.toLowerCase().includes(searchQuery.toLowerCase())) return false;
       return true;
     })
     .sort((a, b) => {

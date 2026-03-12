@@ -46,7 +46,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <h1 className="text-lg font-semibold text-slate-900 dark:text-white">
-                  {user.name}'s Workspace
+                  {user?.name || 'User'}'s Workspace
                 </h1>
               </div>
               <div className="flex items-center gap-4">
@@ -55,7 +55,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   {user.role}
                 </div>
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
-                  {user.name.charAt(0).toUpperCase()}
+                  {user?.name?.charAt(0).toUpperCase() || '?'}
                 </div>
               </div>
             </div>

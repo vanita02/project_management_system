@@ -234,7 +234,7 @@ export default function ReportsPage() {
                         task.status === 'IN_PROGRESS' ? 'bg-blue-100 text-blue-700' :
                         'bg-gray-100 text-gray-700'
                       }`}>
-                        {task.status.replace('_', ' ')}
+                        {task.status?.replace('_', ' ') || 'Unknown'}
                       </span>
                     </td>
                     <td className="px-6 py-4">

@@ -158,7 +158,7 @@ export default function TeamPage() {
 
   const filteredUsers = users.filter((u) => {
     if (roleFilter !== "ALL" && u.role !== roleFilter) return false;
-    if (searchQuery && !u.name.toLowerCase().includes(searchQuery.toLowerCase()) && !u.email.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    if (searchQuery && !u.name?.toLowerCase().includes(searchQuery.toLowerCase()) && !u.email?.toLowerCase().includes(searchQuery.toLowerCase())) return false;
     return true;
   });
 
@@ -303,10 +303,10 @@ export default function TeamPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {member.name.charAt(0).toUpperCase()}
+                    {member?.name?.charAt(0).toUpperCase() || '?'}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 dark:text-white">{member.name}</h3>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">{member?.name || 'Unknown'}</h3>
                     <p className="text-sm text-slate-600 dark:text-slate-400">{member.email}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${

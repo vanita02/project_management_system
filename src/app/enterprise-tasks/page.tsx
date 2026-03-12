@@ -131,7 +131,7 @@ export default function EnterpriseTasksPage() {
                     </td>
                     <td className="px-6 py-4">
                       <span className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusColor(task.status)}`}>
-                        {task.status.replace('_', ' ')}
+                        {task.status?.replace('_', ' ') || 'Unknown'}
                       </span>
                     </td>
                     <td className="px-6 py-4">

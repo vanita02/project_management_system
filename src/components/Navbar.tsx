@@ -88,10 +88,10 @@ export default function Navbar() {
 
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-full flex items-center justify-center text-white font-semibold text-sm shadow-lg">
-                  {user.name.charAt(0).toUpperCase()}
+                  {user?.name?.charAt(0).toUpperCase() || '?'}
                 </div>
                 <div className="hidden lg:block">
-                  <p className="text-white text-sm font-medium leading-tight">{user.name}</p>
+                  <p className="text-white text-sm font-medium leading-tight">{user?.name || 'User'}</p>
                   <p className="text-white/70 text-xs">{user.role}</p>
                 </div>
               </div>
@@ -148,10 +148,10 @@ export default function Navbar() {
           <div className="px-4 py-4 space-y-2">
             <div className="flex items-center gap-3 px-3 py-3 bg-white/10 rounded-xl mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-full flex items-center justify-center text-white font-semibold">
-                {user.name.charAt(0).toUpperCase()}
+                {user?.name?.charAt(0).toUpperCase() || '?'}
               </div>
               <div>
-                <p className="text-white font-medium">{user.name}</p>
+                <p className="text-white font-medium">{user?.name || 'User'}</p>
                 <p className="text-white/70 text-sm">{user.role}</p>
               </div>
             </div>

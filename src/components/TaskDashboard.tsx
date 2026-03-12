@@ -333,7 +333,7 @@ export default function TaskDashboard() {
                         )}
                         <div className="flex flex-wrap items-center gap-2 mt-3">
                           <span className={`px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1 ${getStatusColor(task.status)}`}>
-                            {task.status.replace("_", " ")}
+                            {task.status?.replace('_', ' ') || 'Unknown'}
                           </span>
                           <span className={`px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1 ${getPriorityColor(task.priority)}`}>
                             {getPriorityIcon(task.priority)}

@@ -74,7 +74,7 @@ export default function ProjectsPage() {
                       key={member.id}
                       className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-xs font-medium text-slate-600 border-2 border-white"
                     >
-                      {member.name.split(' ').map(n => n[0]).join('')}
+                      {member?.name?.split(' ').map(n => n[0]).join('') || '?'}
                     </div>
                   ))}
                   {project.members.length > 3 && (
