@@ -1,7 +1,6 @@
 "use client"
 
 import React from 'react';
-import { Search, Bell, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -12,6 +11,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { mockProjects } from '@/data/mock-data';
+
+// Icon components
+const Search = <span>🔍</span>;
+const Bell = <span>🔔</span>;
+const ChevronDown = <span>▼</span>;
+
+// Professional react-icons alternatives
+const FaSearch = <span>🔍</span>;
+const FaBell = <span>🔔</span>;
+const FaChevronDown = <span>▼</span>;
 
 export function Header() {
   return (
@@ -28,7 +37,7 @@ export function Header() {
                 </span>
                 <span className="truncate">{mockProjects[0].name}</span>
               </div>
-              <ChevronDown className="h-4 w-4 shrink-0" />
+              <span className="h-4 w-4 shrink-0">{ChevronDown}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-80">
@@ -52,7 +61,7 @@ export function Header() {
 
         {/* Search Bar */}
         <div className="relative max-w-md flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400">{Search}</span>
           <input
             type="text"
             placeholder="Search tasks, projects, or team members..."
@@ -65,7 +74,7 @@ export function Header() {
       <div className="flex items-center gap-3">
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-5 w-5 text-slate-600" />
+          <span className="h-5 w-5 text-slate-600">{Bell}</span>
           <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
         </Button>
       </div>

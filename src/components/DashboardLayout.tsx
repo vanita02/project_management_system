@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Notifications from "./Notifications";
@@ -45,23 +46,23 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <h1 className="text-lg font-semibold text-slate-900 dark:text-white">
+                <h1 className={`text-lg font-semibold text-slate-900 dark:text-white sm:text-xl lg:text-lg`}>
                   {user?.name || 'User'}'s Workspace
                 </h1>
               </div>
               <div className="flex items-center gap-4">
                 <Notifications />
-                <div className="text-sm text-slate-600 dark:text-slate-400">
+                <div className={`hidden sm:block text-sm text-slate-900 dark:text-slate-100 lg:block`}>
                   {user.role}
                 </div>
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                <Link href="/profile" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium lg:w-10 lg:h-10 hover:bg-blue-700 transition-colors cursor-pointer">
                   {user?.name?.charAt(0).toUpperCase() || '?'}
-                </div>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
           {children}
         </div>
       </main>

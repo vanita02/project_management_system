@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { 
-  LayoutDashboard, 
-  FolderKanban, 
-  CheckSquare, 
-  Grid3x3, 
-  BarChart3, 
-  Settings,
-  User,
-  ChevronDown
-} from 'lucide-react';
+  FaTachometerAlt, 
+  FaFolderOpen, 
+  FaCheckSquare, 
+  FaTh, 
+  FaChartBar, 
+  FaCog, 
+  FaUser, 
+} from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,13 +27,21 @@ interface NavbarProps {
   className?: string;
 }
 
-const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Projects', href: '/projects', icon: FolderKanban },
-  { name: 'Tasks', href: '/enterprise-tasks', icon: CheckSquare },
-  { name: 'Boards', href: '/boards', icon: Grid3x3 },
-  { name: 'Reports', href: '/reports', icon: BarChart3 },
-  { name: 'Settings', href: '/enterprise-settings', icon: Settings },
+interface NavItem {
+  name: string;
+  href: string;
+  icon: React.ReactNode;
+  badge?: number;
+  color?: string;
+}
+
+const navigation: NavItem[] = [
+  { name: 'Dashboard', href: '/dashboard', icon: FaTachometerAlt },
+  { name: 'Projects', href: '/projects', icon: FaFolderOpen },
+  { name: 'Tasks', href: '/enterprise-tasks', icon: FaCheckSquare },
+  { name: 'Profile', href: '/profile', icon: FaUser },
+  { name: 'Analytics', href: '/reports', icon: FaChartBar },
+  { name: 'Settings', href: '/settings', icon: FaCog },
 ];
 
 export function Navbar({ className }: NavbarProps) {
@@ -60,7 +68,7 @@ export function Navbar({ className }: NavbarProps) {
                     variant="ghost"
                     className="justify-start gap-2 h-9 px-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                   >
-                    <Icon className="h-4 w-4" />
+                    <span className="h-4 w-4">{Icon}</span>
                     <span>{item.name}</span>
                   </Button>
                 );
@@ -82,14 +90,14 @@ export function Navbar({ className }: NavbarProps) {
                     <p className="text-sm font-medium text-slate-900">Sarah Chen</p>
                     <p className="text-xs text-slate-500">Admin</p>
                   </div>
-                  <ChevronDown className="h-4 w-4 text-slate-400" />
+                  <span className="h-4 w-4 text-slate-400">{FaChevronDown}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
+                  <span className="mr-2 h-4 w-4">{FaUser}</span>
                   Profile
                 </DropdownMenuItem>
                 <DropdownMenuItem>
@@ -121,7 +129,7 @@ export function Navbar({ className }: NavbarProps) {
                   size="sm"
                   className="justify-start gap-2 h-8 px-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 whitespace-nowrap"
                 >
-                  <Icon className="h-3 w-3" />
+                  <span className="h-3 w-3">{Icon}</span>
                   <span className="text-xs">{item.name}</span>
                 </Button>
               );

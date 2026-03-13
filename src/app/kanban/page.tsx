@@ -121,9 +121,9 @@ export default function KanbanPage() {
       case "MEDIUM":
         return "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800";
       case "LOW":
-        return "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-600";
+        return "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-400 border-slate-200 dark:border-slate-600";
       default:
-        return "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-600";
+        return "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-400 border-slate-200 dark:border-slate-600";
     }
   };
 
@@ -133,7 +133,7 @@ export default function KanbanPage() {
         <div className="flex items-center justify-center h-[calc(100vh-120px)]">
           <div className="flex flex-col items-center gap-4">
             <div className="w-12 h-12 border-4 border-violet-200 dark:border-violet-800 border-t-violet-600 dark:border-t-violet-500 rounded-full animate-spin"></div>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">Loading kanban board...</p>
+            <p className="text-slate-700 dark:text-slate-400 font-medium">Loading kanban board...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -144,8 +144,8 @@ export default function KanbanPage() {
     <DashboardLayout>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-white">Kanban Board</h1>
-        <p className="text-slate-500 dark:text-slate-400 mt-1">Drag and drop tasks between columns</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Kanban Board</h1>
+        <p className="text-slate-700 dark:text-slate-400 mt-1">Drag and drop tasks between columns</p>
       </div>
 
       {/* Kanban Board */}
@@ -172,8 +172,8 @@ export default function KanbanPage() {
                       {column.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 dark:text-white">{column.title}</h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">{columnTasks.length} tasks</p>
+                      <h3 className="font-semibold text-slate-900 dark:text-white">{column.title}</h3>
+                      <p className="text-xs text-slate-700 dark:text-slate-400">{columnTasks.length} tasks</p>
                     </div>
                   </div>
                 </div>
@@ -182,7 +182,7 @@ export default function KanbanPage() {
               {/* Tasks */}
               <div className="p-4 space-y-3 min-h-[200px]">
                 {columnTasks.length === 0 ? (
-                  <div className="flex flex-col items-center justify-center py-8 text-slate-400 dark:text-slate-500">
+                  <div className="flex flex-col items-center justify-center py-8 text-slate-700 dark:text-slate-500">
                     <svg className="w-12 h-12 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
@@ -200,7 +200,7 @@ export default function KanbanPage() {
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2 mb-2">
-                        <h4 className={`font-medium text-slate-800 dark:text-white ${task.status === "COMPLETED" ? "line-through opacity-60" : ""}`}>
+                        <h4 className={`font-medium text-slate-900 dark:text-white ${task.status === "COMPLETED" ? "line-through opacity-60" : ""}`}>
                           {task.title}
                         </h4>
                         <span className={`flex-shrink-0 px-2 py-0.5 rounded-full text-xs font-medium border ${getPriorityColor(task.priority)}`}>
@@ -208,13 +208,13 @@ export default function KanbanPage() {
                         </span>
                       </div>
                       {task.description && (
-                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3 line-clamp-2">
+                        <p className="text-sm text-slate-700 dark:text-slate-400 mb-3 line-clamp-2">
                           {task.description}
                         </p>
                       )}
                       <div className="flex items-center justify-between">
                         {task.dueDate && (
-                          <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                          <div className="flex items-center gap-1 text-xs text-slate-700 dark:text-slate-400">
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -227,7 +227,7 @@ export default function KanbanPage() {
                               {task.user?.name?.charAt(0).toUpperCase() || '?'}
                             </div>
                           ) : (
-                            <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-slate-400 text-xs font-medium">
+                            <div className="w-6 h-6 bg-slate-200 rounded-full flex items-center justify-center text-slate-700 text-xs font-medium">
                               ?
                             </div>
                           )}

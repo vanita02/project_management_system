@@ -158,8 +158,8 @@ export default function ProfilePage() {
     <DashboardLayout>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800 dark:text-white">Profile</h1>
-        <p className="text-slate-500 dark:text-slate-400 mt-1">Manage your account information</p>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Profile</h1>
+        <p className="text-slate-700 dark:text-slate-400 mt-1">Manage your account information</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -170,8 +170,8 @@ export default function ProfilePage() {
               <div className="w-24 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-lg shadow-violet-500/25 mb-4">
                 {user?.name?.charAt(0).toUpperCase() || '?'}
               </div>
-              <h2 className="text-xl font-semibold text-slate-800 dark:text-white">{user?.name || 'User'}</h2>
-              <p className="text-slate-500 dark:text-slate-400">{user?.email || 'No email'}</p>
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{user?.name || 'User'}</h2>
+              <p className="text-slate-700 dark:text-slate-400">{user?.email || 'No email'}</p>
               <span className={`mt-3 px-4 py-1.5 rounded-full text-sm font-medium ${
                 user?.role === "MANAGER"
                   ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300"
@@ -183,19 +183,19 @@ export default function ProfilePage() {
 
             <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
               <div className="space-y-3">
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center gap-3 text-slate-700 dark:text-slate-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <span className="text-sm">{user?.email}</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center gap-3 text-slate-700 dark:text-slate-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <span className="text-sm">{user?.role}</span>
                 </div>
-                <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center gap-3 text-slate-700 dark:text-slate-400">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -210,7 +210,7 @@ export default function ProfilePage() {
         <div className="lg:col-span-2">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white">Account Information</h3>
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Account Information</h3>
               {!isEditing && (
                 <button
                   onClick={() => setIsEditing(true)}
@@ -316,7 +316,7 @@ export default function ProfilePage() {
 
           {/* Security Section */}
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 mt-6">
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-6">Security</h3>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-6">Security</h3>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl">
@@ -327,8 +327,8 @@ export default function ProfilePage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-800 dark:text-white">Password</p>
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Last changed 30 days ago</p>
+                    <p className="font-medium text-slate-900 dark:text-white">Password</p>
+                    <p className="text-sm text-slate-700 dark:text-slate-400">Last changed 30 days ago</p>
                   </div>
                 </div>
                 <button 
@@ -347,7 +347,7 @@ export default function ProfilePage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-800 dark:text-white">Two-Factor Authentication</p>
+                    <p className="font-medium text-slate-900 dark:text-white">Two-Factor Authentication</p>
                     <p className="text-sm text-slate-500 dark:text-slate-400">
                       {twoFactorEnabled ? "Enabled" : "Add an extra layer of security"}
                     </p>
@@ -374,7 +374,7 @@ export default function ProfilePage() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-md p-8 animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Change Password</h2>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Change Password</h2>
               <button
                 onClick={() => setShowPasswordModal(false)}
                 className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"

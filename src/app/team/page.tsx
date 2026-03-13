@@ -345,7 +345,7 @@ export default function TeamPage() {
                   <JiraButton
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/20"
+                    className="bg-red-600 dark:bg-red-600 text-white hover:bg-red-700 dark:hover:bg-red-700"
                     onClick={() => setDeleteConfirm(member.id)}
                   >
                     Delete
@@ -389,7 +389,7 @@ export default function TeamPage() {
             <div className="flex gap-3">
               <JiraButton
                 variant="primary"
-                className="flex-1"
+                className="flex-1 bg-red-600 dark:bg-red-600 text-white hover:bg-red-700 dark:hover:bg-red-700"
                 onClick={() => handleDeleteUser(deleteConfirm)}
               >
                 Delete

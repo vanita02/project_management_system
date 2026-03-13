@@ -80,10 +80,10 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
               />
             </svg>
           </div>
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 className={`text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4`}>
             Vanita&apos;s Task
           </h1>
-          <p className="text-xl text-white/80 max-w-md">
+          <p className={`text-xl text-slate-900/80 dark:text-slate-100/80 max-w-md`}>
             Manage your tasks efficiently with our beautiful and intuitive task management system
           </p>
 
@@ -95,8 +95,8 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-1">Track Progress</h3>
-              <p className="text-white/60 text-sm">Monitor your tasks from start to finish</p>
+              <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">Track Progress</h3>
+              <p className="text-slate-900/60 dark:text-slate-100/60 text-sm">Monitor your tasks from start to finish</p>
             </div>
             <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-4 border border-white/20">
               <div className="w-10 h-10 bg-blue-400/30 rounded-xl flex items-center justify-center mb-3">
@@ -104,8 +104,8 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-1">Team Collaboration</h3>
-              <p className="text-white/60 text-sm">Work together with your team</p>
+              <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">Team Collaboration</h3>
+              <p className="text-slate-900/60 dark:text-slate-100/60 text-sm">Work together with your team</p>
             </div>
             <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-4 border border-white/20">
               <div className="w-10 h-10 bg-rose-400/30 rounded-xl flex items-center justify-center mb-3">
@@ -113,8 +113,8 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-1">Due Dates</h3>
-              <p className="text-white/60 text-sm">Never miss a deadline</p>
+              <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">Due Dates</h3>
+              <p className="text-slate-900/60 dark:text-slate-100/60 text-sm">Never miss a deadline</p>
             </div>
             <div className="bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl p-4 border border-white/20">
               <div className="w-10 h-10 bg-blue-400/30 rounded-xl flex items-center justify-center mb-3">
@@ -122,17 +122,17 @@ export default function AuthForm({ mode, onToggleMode }: AuthFormProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-1">Priority Levels</h3>
-              <p className="text-white/60 text-sm">Focus on what matters most</p>
+              <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">Priority Levels</h3>
+              <p className="text-slate-900/60 dark:text-slate-100/60 text-sm">Focus on what matters most</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 overflow-y-auto">
         <div className="w-full max-w-md">
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 lg:p-10">
+          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 lg:p-10 overflow-y-auto max-h-screen lg:max-h-none">
             {/* Mobile Logo */}
             <div className="lg:hidden flex items-center justify-center mb-8">
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-3 shadow-lg">

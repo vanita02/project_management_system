@@ -348,7 +348,7 @@ export default function SettingsPage() {
                   size="sm"
                   onClick={handleDeleteAllTasks}
                   disabled={user?.role !== "MANAGER"}
-                  className="text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40"
+                  className="bg-red-600 dark:bg-red-600 text-white hover:bg-red-700 dark:hover:bg-red-700"
                 >
                   Delete
                 </JiraButton>
@@ -365,8 +365,7 @@ export default function SettingsPage() {
                   variant="ghost"
                   size="sm"
                   onClick={handleDeleteAccount}
-                  disabled={user?.role !== "MANAGER"}
-                  className="text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40"
+                  className="bg-red-600 dark:bg-red-600 text-white hover:bg-red-700 dark:hover:bg-red-700"
                 >
                   Delete Account
                 </JiraButton>

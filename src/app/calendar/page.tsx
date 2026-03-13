@@ -134,7 +134,7 @@ export default function CalendarPage() {
         <div className="flex items-center justify-center h-[calc(100vh-120px)]">
           <div className="flex flex-col items-center gap-4">
             <div className="w-12 h-12 border-4 border-blue-200 dark:border-blue-800 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin"></div>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">Loading calendar...</p>
+            <p className="text-slate-700 dark:text-slate-400 font-medium">Loading calendar...</p>
           </div>
         </div>
       </DashboardLayout>
@@ -146,7 +146,7 @@ export default function CalendarPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">Calendar</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">View your tasks by date</p>
+        <p className="text-slate-700 dark:text-slate-400 mt-1">View your tasks by date</p>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
@@ -171,7 +171,7 @@ export default function CalendarPage() {
                 onClick={previousMonth}
                 className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
               >
-                <svg className="w-5 h-5 text-slate-600 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-slate-700 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
@@ -179,7 +179,7 @@ export default function CalendarPage() {
                 onClick={nextMonth}
                 className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
               >
-                <svg className="w-5 h-5 text-slate-600 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-slate-700 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -189,7 +189,7 @@ export default function CalendarPage() {
           {/* Day Names */}
           <div className="grid grid-cols-7 mb-2">
             {dayNames.map((day) => (
-              <div key={day} className="text-center py-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+              <div key={day} className="text-center py-2 text-sm font-semibold text-slate-700 dark:text-slate-400">
                 {day}
               </div>
             ))}
@@ -275,7 +275,7 @@ export default function CalendarPage() {
                           {task.title}
                         </p>
                         {task.description && (
-                          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                          <p className="text-sm text-slate-700 dark:text-slate-400 mt-1 line-clamp-2">
                             {task.description}
                           </p>
                         )}
@@ -295,7 +295,7 @@ export default function CalendarPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <p className="text-slate-500 dark:text-slate-400">No tasks for this date</p>
+                <p className="text-slate-700 dark:text-slate-400">No tasks for this date</p>
               </div>
             )
           ) : (
@@ -305,7 +305,7 @@ export default function CalendarPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                 </svg>
               </div>
-              <p className="text-slate-500 dark:text-slate-400">Click on a date to see tasks</p>
+              <p className="text-slate-700 dark:text-slate-400">Click on a date to see tasks</p>
             </div>
           )}
         </div>

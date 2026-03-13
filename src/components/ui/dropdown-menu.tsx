@@ -1,16 +1,17 @@
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { cn } from "@/lib/utils"
-
-// Icon components
-const LayoutDashboard = <span>📊</span>;
-const FolderKanban = <span>📋</span>;
-const CheckSquare = <span>✓</span>;
-const Grid3x3 = <span>🗂️</span>;
-const BarChart3 = <span>📈</span>;
-const Settings = <span>⚙️</span>;
-const User = <span>👤</span>;
-const ChevronDown = <span>▼</span>;
+import { 
+  FaTachometerAlt, 
+  FaFolderOpen, 
+  FaCheckSquare, 
+  FaTh, 
+  FaChartBar, 
+  FaCog, 
+  FaUser, 
+  FaChevronDown,
+  FaCircle
+} from 'react-icons/fa'
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 
@@ -39,7 +40,9 @@ const DropdownMenuSubTrigger = React.forwardRef<
     )}
   >
     {children}
-    <span className="ml-auto h-4 w-4">▼</span>
+    <span className="ml-auto h-4 w-4">
+      <FaChevronDown />
+    </span>
   </DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
@@ -132,7 +135,9 @@ const DropdownMenuRadioItem = React.forwardRef<
     {...props}
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <span className="h-2 w-2">●</span>
+      <DropdownMenuPrimitive.ItemIndicator>
+        <FaCircle className="h-2 w-2 fill-current" />
+      </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
   </DropdownMenuPrimitive.RadioItem>
@@ -198,4 +203,13 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
+  FaTachometerAlt,
+  FaFolderOpen,
+  FaCheckSquare,
+  FaTh,
+  FaChartBar,
+  FaCog,
+  FaUser,
+  FaChevronDown,
+  FaCircle,
 }
