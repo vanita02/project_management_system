@@ -2,17 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useAuth } from "./AuthContext";
-
-interface Notification {
-  id: number;
-  userId: number;
-  title: string;
-  message: string;
-  type: string;
-  relatedId?: number;
-  isRead: boolean;
-  createdAt: string;
-}
+import { Notification } from "@/types";
 
 interface NotificationsContextType {
   notifications: Notification[];

@@ -1,13 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
 
 interface JiraButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline" | "ghost" | "link";
   size?: "sm" | "md" | "lg";
-  icon?: LucideIcon;
+  icon?: React.ReactNode;
   iconPosition?: "left" | "right";
   disabled?: boolean;
   loading?: boolean;
@@ -59,7 +58,9 @@ export function JiraButton({
   );
 
   const iconElement = Icon && (
-    <Icon className={cn(iconSizes[size], iconPosition === "left" ? "mr-2" : "ml-2")} />
+    <span className={cn(iconSizes[size], iconPosition === "left" ? "mr-2" : "ml-2")}>
+      {Icon}
+    </span>
   );
 
   const loadingElement = loading && (
