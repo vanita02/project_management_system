@@ -40,18 +40,22 @@ interface NavItem {
   color?: string;
 }
 
-export default function Sidebar() {
+interface SidebarProps {
+  isMobileOpen?: boolean;
+  setIsMobileOpen?: (open: boolean) => void;
+}
+
+export default function Sidebar({ isMobileOpen = false, setIsMobileOpen }: SidebarProps = {}) {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   if (!user) return null;
 
   const navItems: NavItem[] = [
-    { name: "Dashboard", href: "/dashboard", color: "from-blue-500 to-blue-600", icon: iconDashboard },
+    { name: "Dashboard", href: user.role === "MANAGER" ? "/dashboard/manager" : "/dashboard/user", color: "from-blue-500 to-blue-600", icon: iconDashboard },
     { name: "My Tasks", href: "/tasks", color: "from-slate-500 to-slate-600", icon: iconTasks },
     { name: "Kanban Board", href: "/kanban", color: "from-purple-500 to-purple-600", icon: iconKanban },
     { name: "Calendar", href: "/calendar", color: "from-green-500 to-green-600", icon: iconCalendar },
@@ -76,7 +80,7 @@ export default function Sidebar() {
       <Link
         key={item.href}
         href={item.href}
-        onClick={() => setIsMobileOpen(false)}
+        onClick={() => setIsMobileOpen && setIsMobileOpen(false)}
         className={`group flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 relative
           ${
             isActive
@@ -89,10 +93,10 @@ export default function Sidebar() {
         }`}>
           {item.icon}
         </span>
-        {!isCollapsed && (
+        {(!isCollapsed || isMobileOpen) && (
           <span className={`font-medium text-${theme === "light" ? "slate-900" : "slate-100"}`}>{item.name}</span>
         )}
-        {item.badge && !isCollapsed && (
+        {item.badge && (!isCollapsed || isMobileOpen) && (
           <span className={`ml-auto bg-${theme === "light" ? "slate-200" : "slate-700"} text-${theme === "light" ? "slate-700" : "slate-300"} text-xs px-2 py-0.5 rounded-full`}>
             {item.badge}
           </span>
@@ -107,13 +111,13 @@ export default function Sidebar() {
       {isMobileOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={() => setIsMobileOpen(false)}
+          onClick={() => setIsMobileOpen && setIsMobileOpen(false)}
         />
       )}
       
       <aside
         className={`fixed top-0 left-0 h-full bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col z-50 transition-all duration-300
-          ${isCollapsed ? "w-16" : "w-64"}
+          ${isCollapsed && !isMobileOpen ? "w-16" : "w-64"}
           ${isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         {/* Logo */}
@@ -122,7 +126,7 @@ export default function Sidebar() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
               T
             </div>
-            {!isCollapsed && (
+            {(!isCollapsed || isMobileOpen) && (
               <div>
                 <h1 className={`font-bold text-lg text-${theme === "light" ? "slate-900" : "slate-100"}`}>TaskHub</h1>
                 <p className={`text-xs text-${theme === "light" ? "slate-500" : "slate-400"}`}>Project Management</p>
@@ -132,12 +136,12 @@ export default function Sidebar() {
         </div>
 
         {/* Navigation */}
-        <nav className="hidden lg:flex lg:flex-col lg:flex-1 p-3 space-y-1 overflow-hidden">
+        <nav className={`${isMobileOpen ? "flex flex-col" : "hidden"} lg:flex lg:flex-col lg:flex-1 p-3 space-y-1 overflow-hidden`}>
           {allNavItems.map(renderNavItem)}
         </nav>
 
         {/* User section */}
-        <div className="hidden lg:block lg:flex-1 lg:p-3 lg:border-t lg:border-slate-200 lg:dark:border-slate-700 lg:space-y-1">
+        <div className={`${isMobileOpen ? "flex flex-col" : "hidden"} lg:block lg:flex-1 lg:p-3 lg:border-t lg:border-slate-200 lg:dark:border-slate-700 lg:space-y-1`}>
           {bottomItems.map((item) => (
             <Link
               key={item.href}
@@ -147,7 +151,7 @@ export default function Sidebar() {
               <span className={`w-5 h-5 flex items-center justify-center text-${theme === "light" ? "slate-900" : "slate-100"}`}>
                 {item.icon}
               </span>
-              {!isCollapsed && (
+              {(!isCollapsed || isMobileOpen) && (
                 <span className={`font-medium text-${theme === "light" ? "slate-900" : "slate-100"}`}>{item.name}</span>
               )}
             </Link>
@@ -155,7 +159,7 @@ export default function Sidebar() {
         </div>
 
         {/* Theme toggle and logout buttons */}
-        <div className="hidden lg:flex lg:flex-col lg:gap-3 lg:p-3">
+        <div className={`${isMobileOpen ? "flex flex-col gap-3 p-3" : "hidden"} lg:flex lg:flex-col lg:gap-3 lg:p-3`}>
           <button
             onClick={toggleTheme}
             className="w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 text-slate-900 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
@@ -163,17 +167,17 @@ export default function Sidebar() {
             <span className="w-5 h-5 flex items-center justify-center text-slate-900 dark:text-slate-500">
               {theme === "light" ? <FaSun /> : <FaMoon />}
             </span>
-            {!isCollapsed && <span className="font-medium">{theme === "light" ? "Dark Mode" : "Light Mode"}</span>}
+            {(!isCollapsed || isMobileOpen) && <span className="font-medium">{theme === "light" ? "Dark Mode" : "Light Mode"}</span>}
           </button>
 
           <button
             onClick={() => setShowLogoutModal(true)}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 text-slate-900 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200 bg-red-600 dark:bg-red-600 text-white hover:bg-red-700 dark:hover:bg-red-700"
           >
             <span className="w-5 h-5 flex items-center justify-center">
               <FaSignOutAlt />
             </span>
-            {!isCollapsed && <span className="font-medium">Logout</span>}
+            {(!isCollapsed || isMobileOpen) && <span className="font-medium">Logout</span>}
           </button>
         </div>
 

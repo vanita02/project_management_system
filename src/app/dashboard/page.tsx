@@ -1,25 +1,33 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const router = useRouter();
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || isRedirecting) return;
 
+    setIsRedirecting(true);
+    
     // Route to appropriate dashboard based on role
     if (user.role === 'MANAGER') {
-      router.push('/dashboard/manager');
+      router.replace('/dashboard/manager');
     } else {
-      router.push('/dashboard/user');
+      router.replace('/dashboard/user');
     }
-  }, [user, router]);
+  }, [user, router, isRedirecting]);
 
-  // Show loading or redirect message
+  // Don't show anything if redirecting to prevent flash
+  if (isRedirecting) {
+    return null;
+  }
+
+  // Show loading only on initial load
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50">
       <div className="text-center">
